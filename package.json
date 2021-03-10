@@ -1,0 +1,10 @@
+{
+  "name": "event",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forcepusher/event.git"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/forcepusher/event#readme"
+}
