@@ -3,7 +3,7 @@ import EventHandler from './EventHandler';
 /**
  * Event that can be subscribed to.
  */
-export default interface Event<E> {
+export default interface Event<E = void> {
   /**
    * Register a new handler with the dispatcher. Any time the event is
    * dispatched, the handler will be notified.

@@ -4,7 +4,7 @@ import EventHandler from './EventHandler';
 /**
  * Dispatcher that can propogate events to subscribers.
  */
-export default class EventDispatcher<E> implements Event<E> {
+export default class EventDispatcher<E = void> implements Event<E> {
   /**
    * The handlers that want to be notified when an event occurs.
    */
