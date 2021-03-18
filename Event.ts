@@ -1,19 +1,18 @@
-import EventHandler from './EventHandler';
+import EventSource from './EventSource';
+import EventTarget from './EventTarget';
 
-/**
- * Event that can be subscribed to.
- */
-export default interface Event<E = void> {
-  /**
-   * Register a new handler with the dispatcher. Any time the event is
-   * dispatched, the handler will be notified.
-   * @param handler The handler to register.
-   */
-  register(handler: EventHandler<E>): void;
+export default class Event<TArgument = void> implements EventSource<TArgument> {
+  private eventTargets = new Set<EventTarget<TArgument>>();
 
-  /**
-   * Desubscribe a handler from the dispatcher.
-   * @param handler The handler to remove.
-   */
-  unregister(handler: EventHandler<E>): void;
+  public subscribe(eventTarget: EventTarget<TArgument>): void {
+    this.eventTargets.add(eventTarget);
+  }
+
+  public unsubscribe(eventTarget: EventTarget<TArgument>): void {
+    this.eventTargets.delete(eventTarget);
+  }
+
+  public invoke(argument: TArgument): void {
+    this.eventTargets.forEach((eventTarget) => eventTarget.onInvoke(argument));
+  }
 }
